@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text,SafeAreaView, StyleSheet} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import {View, Text,SafeAreaView, StyleSheet, Dimensions} from 'react-native';
+import { FlatList, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import plant from '../../consts/plants';
 
 import COLORS from './colors' ;
 
+const width = Dimensions.get('screen').width/2-30;
 const HomeScreen = () => {
 
   const categories =['Strings', 'keyboard','Wind','purcusion']
@@ -14,10 +16,29 @@ const HomeScreen = () => {
     return( 
       <View style ={style.categoryContainer}>
         {categories.map((item,index)=> (
-        <Text key = {[index]} style={[style.categoryText,categoryIndex == index && style.categoryTextSelected ]}>{item}</Text>
-      ))}
+
+          <TouchableOpacity 
+            key = {[index]}
+            activeOpacity = {0.8} 
+            onPress={()=>setCategoryIndex(index)}>
+            <Text 
+              
+              style={[
+                style.categoryText,
+                categoryIndex == index && style.categoryTextSelected
+              ]}>
+                {item}
+            </Text>
+          </TouchableOpacity>
+
+          
+        ))}
       </View>
     )  
+  };
+
+  const Card =({item})=>{
+    return <View style={style.card}></View>
   };
 
   return (
@@ -48,6 +69,12 @@ const HomeScreen = () => {
       </View>
 
       <CategoryList/>
+      <FlatList 
+        columnWrapperStyle ={{justifyContent:'space-between'}}
+        numColumns={2} 
+        data={plant} 
+        renderItem ={({item}) => <Card plant={item}/>}
+      />
     </SafeAreaView>
   );
 };
@@ -97,6 +124,17 @@ const style = StyleSheet.create({
     paddingBottom : 5,
     borderBottomWidth : 2,
     borderColor:COLORS.blue_thick
+
+  },
+  card :{
+    height : 200,
+    backgroundColor :COLORS.light,
+    width,
+    marginHorizontal:2,
+    borderRadius : 10,
+    marginBottom : 20,
+    padding : 15,
+
 
 
   }
