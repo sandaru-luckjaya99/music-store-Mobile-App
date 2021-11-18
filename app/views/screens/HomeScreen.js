@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text,SafeAreaView, StyleSheet, Dimensions} from 'react-native';
 import { FlatList, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import plant from '../../consts/plants';
 
 import COLORS from './colors' ;
@@ -37,8 +37,27 @@ const HomeScreen = () => {
     )  
   };
 
-  const Card =({item})=>{
-    return <View style={style.card}></View>
+  const Card =({plant})=>{
+    return (
+      <View style={style.card}>
+        <View style={{alignItems:"flex-end"}}>
+          <View 
+            style={{
+              width:30, 
+              height:30, 
+              borderRadius:15,
+              justifyContent:'center',
+              alignItems:'center',
+              backgroundColor: plant.like 
+                ? 'rgba(245,42,42,0.2)'
+                : 'rgba(0,0,0,0.2)',
+
+            }}
+          >
+          <Icon name ="heart" size={18} color ={COLORS.dark} backgroundColor ={COLORS.blue_thick} />
+          </View>
+        </View>
+      </View>);
   };
 
   return (
@@ -69,8 +88,15 @@ const HomeScreen = () => {
       </View>
 
       <CategoryList/>
+
+      {/* item view with flat list */}
       <FlatList 
         columnWrapperStyle ={{justifyContent:'space-between'}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          marginTop:10,
+          paddingBottom : 50,
+        }}
         numColumns={2} 
         data={plant} 
         renderItem ={({item}) => <Card plant={item}/>}
@@ -115,7 +141,7 @@ const style = StyleSheet.create({
     justifyContent : 'space-between'
   },
   categoryText: {
-    fontSize : 16,
+    fontSize : 18,
     color : COLORS.blue_light,
     fontWeight : '900'
   },
