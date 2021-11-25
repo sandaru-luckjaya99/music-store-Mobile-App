@@ -1,169 +1,372 @@
 import React from 'react';
-import {View, Text,SafeAreaView, StyleSheet, Dimensions} from 'react-native';
-import { FlatList, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  Dimensions,
+  Image,
+  FlatList,
+} from 'react-native';
+import {
+  
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import plant from '../../consts/plants';
+import instruments from '../../consts/instrument';
+import Instrumentt from '../../consts/instrumentt';
 
-import COLORS from './colors' ;
+import COLORS from './colors';
 
-const width = Dimensions.get('screen').width/2-30;
-const HomeScreen = () => {
+const width = Dimensions.get('screen').width / 2 - 30;
+// const tabdata = instruments;
 
-  const categories =['Strings', 'keyboard','Wind','purcusion']
-  const [categoryIndex,setCategoryIndex] = React.useState(0)
+const HomeScreen = ({navigation}) => {
+
+  const categories = ['Strings', 'keyboard', 'Wind', 'purcusion'];
+  const [categoryIndex, setCategoryIndex] = React.useState(0);
 
   const CategoryList = () => {
-    return( 
-      <View style ={style.categoryContainer}>
-        {categories.map((item,index)=> (
-
-          <TouchableOpacity 
-            key = {[index]}
-            activeOpacity = {0.8} 
-            onPress={()=>setCategoryIndex(index)}>
-            <Text 
-              
+    
+    return (
+      <View style={style.categoryContainer}>
+        {categories.map((item, index) => (
+          <TouchableOpacity
+            key={[index]}
+            activeOpacity={0.1}
+            onPress={() => setCategoryIndex(index)}>
+            <Text
               style={[
                 style.categoryText,
-                categoryIndex == index && style.categoryTextSelected
+                categoryIndex === index && style.categoryTextSelected,
               ]}>
-                {item}
+              {item}
             </Text>
           </TouchableOpacity>
-
-          
         ))}
       </View>
-    )  
+    );
   };
 
-  const Card =({plant})=>{
+  // card
+  const Card_for_strings = ({instruments}) => {
     return (
-      <View style={style.card}>
-        <View style={{alignItems:"flex-end"}}>
-          <View 
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Details', instruments)}>
+        <View style={style.card}>
+          <View style={{alignItems: 'flex-end'}}>
+            <View
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: instruments.like
+                  ? 'rgba(245,42,42,0.2)'
+                  : 'rgba(0,0,0,0.2)',
+              }}>
+              <Icon
+                name="heart"
+                size={18}
+                color={COLORS.dark}
+                backgroundColor={COLORS.blue_thick}
+                color={instruments.like ? COLORS.red : COLORS.dark}
+              />
+            </View>
+          </View>
+          <View style={{height: 100, alignItems: 'center'}}>
+            <Image
+              style={{
+                flex: 1,
+                resizeMode: 'contain',
+              }}
+              source={instruments.img}
+            />
+          </View>
+          <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+            {instruments.name}
+          </Text>
+          <View
             style={{
-              width:30, 
-              height:30, 
-              borderRadius:15,
-              justifyContent:'center',
-              alignItems:'center',
-              backgroundColor: plant.like 
-                ? 'rgba(245,42,42,0.2)'
-                : 'rgba(0,0,0,0.2)',
-
-            }}
-          >
-          <Icon name ="heart" size={18} color ={COLORS.dark} backgroundColor ={COLORS.blue_thick} />
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 5,
+            }}>
+            <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+              LKR.{instruments.price}
+            </Text>
+            <View
+              style={{
+                height: 28,
+                width: 28,
+                backgroundColor: COLORS.blue_thick,
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text
+                style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
+                {''}+{''}
+              </Text>
+            </View>
           </View>
         </View>
-      </View>);
+      </TouchableOpacity>
+    );
   };
 
+  // coppied card const
+
+  const Card_for_keyboard = ({Instrumentt}) => {
+    return (
+      <View style={style.card}>
+        <View style={{alignItems: 'flex-end'}}>
+          <TouchableOpacity>
+            <View
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: Instrumentt.like
+                  ? 'rgba(245,42,42,0.2)'
+                  : 'rgba(0,0,0,0.2)',
+              }}>
+              <Icon
+                name="heart"
+                size={18}
+                color={COLORS.dark}
+                backgroundColor={COLORS.blue_thick}
+                color={Instrumentt.like ? COLORS.red : COLORS.dark}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View style={{height: 100, alignItems: 'center'}}>
+          <Image
+            style={{
+              flex: 1,
+              resizeMode: 'contain',
+            }}
+            source={Instrumentt.img}
+          />
+        </View>
+        <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+          {Instrumentt.name}
+        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 5,
+          }}>
+          <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+            LKR.{Instrumentt.price}
+          </Text>
+          <View
+            style={{
+              height: 28,
+              width: 28,
+              backgroundColor: COLORS.blue_thick,
+              borderRadius: 5,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
+              {' '}
+              +{' '}
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
+
+
+  const Tab = ({item}) => {
+    console.log(categoryIndex)
+    if (categoryIndex === 0){
+      return(
+        <FlatList
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          marginTop: 10,
+          paddingBottom: 50,
+        }}
+        numColumns={2}
+      
+        data = {instruments}
+      
+        renderItem={({item}) => <Card_for_strings instruments={item}/>}
+      
+      
+      />
+      )
+    } else {
+      return(
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-between'}}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            marginTop: 10,
+            paddingBottom: 50,
+          }}
+          numColumns={2}
+          data = {Instrumentt}
+          renderItem={({item}) => <Card_for_keyboard Instrumentt={item}/>}
+        />
+      )
+    }
+  };
+
+  // const tab2 = ({instruments,Instrumentt}) => {
+  //   if (categoryIndex === 0){
+  //     instruments
+  //   } else {
+  //     Instrumentt 
+  //   }
+  // };
+
+  
   return (
-    <SafeAreaView 
-    style ={{
-      flex:1,
-      paddingHorizontal:20,
-      backgroundColor: COLORS.white,
-    }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingHorizontal: 20,
+        backgroundColor: COLORS.white,
+      }}>
       <View style={style.header}>
         {/* Welcome text with name */}
         <View>
-          <Text style={{fontSize:25,fontWeight:'bold' , color:COLORS.blue_light}}>Welcome to</Text>
-          <Text style={{fontSize:35, fontWeight:'bold',color:COLORS.blue_thick}}>Soul Music</Text>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: 'bold',
+              color: COLORS.blue_light,
+            }}>
+            Welcome to
+          </Text>
+          <Text
+            style={{
+              fontSize: 35,
+              fontWeight: 'bold',
+              color: COLORS.blue_thick,
+            }}>
+            Soul Music
+          </Text>
         </View>
-        <Icon name='shopping-cart' size={25} color={COLORS.blue_light} marginTop={30}></Icon>   
+        <Icon
+          name="shopping-cart"
+          size={25}
+          color={COLORS.blue_light}
+          marginTop={30}></Icon>
       </View>
 
       {/* Search bar and filter */}
-      <View style={{marginTop:15 , flexDirection : 'row'}}>
+      <View style={{marginTop: 15, flexDirection: 'row'}}>
         <View style={style.searchContainer}>
           <Icon name="search" size={20} style={{marginLeft: 20}}></Icon>
           <TextInput placeholder="Search" style={style.input} />
         </View>
         <View style={style.sortBtn}>
-          <Icon name ="filter" size={25} color={COLORS.white}/>
+          <Icon name="filter" size={25} color={COLORS.white} />
         </View>
       </View>
 
-      <CategoryList/>
+      <CategoryList />
 
       {/* item view with flat list */}
-      <FlatList 
-        columnWrapperStyle ={{justifyContent:'space-between'}}
+      <Tab></Tab>
+      {/* <FlatList
+        columnWrapperStyle={{justifyContent: 'space-between'}}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          marginTop:10,
-          paddingBottom : 50,
+          marginTop: 10,
+          paddingBottom: 50,
         }}
-        numColumns={2} 
-        data={plant} 
-        renderItem ={({item}) => <Card plant={item}/>}
-      />
+        numColumns={2}
+        // data = {Instrumentt}
+        data = {instruments}
+        //extraData = {Instrumentt}
+        renderItem={({item}) => <Card instruments={item}/>}
+        //renderItem={tab}
+        
+        
+
+        // data = {Instrumentt}
+        // renderItem={({item,item2}) => (categoryIndex === 0) ?   <Card instruments={item}></Card>  :  <Card1 Instrumentt={item2}/>}
+        
+        
+        // renderItem={({item}) => <Card1 Instrumentt={item} />}
+        
+        
+      /> */}
     </SafeAreaView>
   );
 };
 
 const style = StyleSheet.create({
-  header:{
-    marginTop:20,
-    flexDirection:'row',
-    justifyContent:'space-between'
-    },
-  searchContainer:{
-    height: 45,
-    backgroundColor:COLORS.light,
-    borderRadius : 10,
-    flex : 1,
-    flexDirection: 'row', 
-    alignItems : 'center',
-  },
-  input : {
-    fontSize : 18,
-    fontWeight : 'bold',
-    color : COLORS.dark,
-    flex : 1,
-  },
-  sortBtn : {
-    marginLeft : 10,
-    height : 45,
-    width : 45,
-    backgroundColor : COLORS.blue_thick,
-    justifyContent : 'center',
-    alignItems : 'center',
-    borderRadius : 10,
-  },
-  categoryContainer:{
+  header: {
+    marginTop: 20,
     flexDirection: 'row',
-    marginTop : 25,
-    marginBottom : 15,
-    justifyContent : 'space-between'
+    justifyContent: 'space-between',
+  },
+  searchContainer: {
+    height: 45,
+    backgroundColor: COLORS.light,
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  input: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: COLORS.dark,
+    flex: 1,
+  },
+  sortBtn: {
+    marginLeft: 10,
+    height: 45,
+    width: 45,
+    backgroundColor: COLORS.blue_thick,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  categoryContainer: {
+    flexDirection: 'row',
+    marginTop: 25,
+    marginBottom: 15,
+    justifyContent: 'space-between',
   },
   categoryText: {
-    fontSize : 18,
-    color : COLORS.blue_light,
-    fontWeight : '900'
+    fontSize: 18,
+    color: COLORS.blue_light,
+    fontWeight: '900',
   },
-  categoryTextSelected : {
-    color : COLORS.blue_thick,
-    paddingBottom : 5,
-    borderBottomWidth : 2,
-    borderColor:COLORS.blue_thick
-
+  categoryTextSelected: {
+    color: COLORS.blue_thick,
+    paddingBottom: 5,
+    borderBottomWidth: 2,
+    borderColor: COLORS.blue_thick,
   },
-  card :{
-    height : 200,
-    backgroundColor :COLORS.light,
+  card: {
+    height: 220,
+    backgroundColor: COLORS.light,
     width,
-    marginHorizontal:2,
-    borderRadius : 10,
-    marginBottom : 20,
-    padding : 15,
-
-
-
-  }
+    marginHorizontal: 2,
+    borderRadius: 10,
+    marginBottom: 20,
+    padding: 15,
+  },
 });
 
 export default HomeScreen;
