@@ -9,6 +9,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 const Stack = createStackNavigator();
+import OnboardingScreen from './views/screens/onboardingScreen';
 import HomeScreen from './views/screens/HomeScreen';
 import DetailsScreen from './views/screens/DetailsScreen';
 
@@ -23,6 +24,13 @@ const App = () => {
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
       <Stack.Navigator ScreenOptions={{header: () => null}}>
+        <Stack.Screen 
+          name="Onboard" 
+          component={OnboardingScreen} 
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}

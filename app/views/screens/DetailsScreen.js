@@ -51,7 +51,7 @@ const DetailsScreen = ({navigation, route}) => {
           <Text style={{fontSize: 15, fontWeight: 'bold', color : COLORS.blue_thick}}>{instrument.size_or_type}</Text>
           
           {/* --- Instrument Price  */}
-          {/* <View style={style.priceTag}>
+          <View style={style.priceTag}>
             <Text
               style={{
                 marginLeft: 15,
@@ -61,7 +61,7 @@ const DetailsScreen = ({navigation, route}) => {
               }}>
               LKR{instrument.price}
             </Text>
-          </View> */}
+          </View>
         </View>
 
         {/* -- Instrument content */}
@@ -148,7 +148,7 @@ const style = StyleSheet.create({
   detailsContainer: {
     flex: 0.40,
     backgroundColor: COLORS.bluueLi,
-    marginHorizontal:10 ,
+    marginHorizontal:5 ,
     marginBottom:5,
     // borderRadius: 20,
     marginTop: 8,
