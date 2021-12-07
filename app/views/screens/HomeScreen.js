@@ -9,27 +9,23 @@ import {
   FlatList,
 } from 'react-native';
 import {
-  
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
 } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import instruments from '../../consts/instrument';
 import Instrumentt from '../../consts/instrumentt';
 
 import COLORS from './colors';
 
 const width = Dimensions.get('screen').width / 2 - 30;
-// const tabdata = instruments;
 
 const HomeScreen = ({navigation}) => {
-
   const categories = ['Strings', 'keyboard', 'Wind', 'purcusion'];
   const [categoryIndex, setCategoryIndex] = React.useState(0);
 
   const CategoryList = () => {
-    
     return (
       <View style={style.categoryContainer}>
         {categories.map((item, index) => (
@@ -50,7 +46,8 @@ const HomeScreen = ({navigation}) => {
     );
   };
 
-  // card
+  // card for string items
+
   const Card_for_strings = ({instruments}) => {
     return (
       <TouchableOpacity
@@ -69,7 +66,7 @@ const HomeScreen = ({navigation}) => {
                   : 'rgba(0,0,0,0.2)',
               }}>
               <Icon
-                name="heart"
+                name="favorite"
                 size={18}
                 color={COLORS.dark}
                 backgroundColor={COLORS.blue_thick}
@@ -86,7 +83,7 @@ const HomeScreen = ({navigation}) => {
               source={instruments.img}
             />
           </View>
-          <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+          <Text style={{fontWeight:'300', fontSize: 17, marginTop: 10,color :COLORS.black}}>
             {instruments.name}
           </Text>
           <View
@@ -95,8 +92,89 @@ const HomeScreen = ({navigation}) => {
               justifyContent: 'space-between',
               marginTop: 5,
             }}>
-            <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+            <Text style={{fontSize: 17, fontWeight: 'bold', color:COLORS.black}}>
               LKR.{instruments.price}
+            </Text>
+            <View
+              style={{
+                height: 28,
+                width: 28,
+                backgroundColor: COLORS.blue_thick,
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+                
+                // height: 30,
+                // width: 30,
+                // backgroundColor: COLORS.blue_thick,
+                // borderRadius: 6,
+                // justifyContent: 'center',
+                // alignItems: 'center',
+                // //borderBottomRightRadius : 20,
+                // marginLeft : 21,
+                // marginBottom : 5
+              }}>
+              <Text
+                style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
+                {''}+{''}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  // cards for keyboard item
+
+  const Card_for_keyboard = ({Instrumentt}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Details', Instrumentt)}>
+        <View style={style.card}>
+          <View style={{alignItems: 'flex-end'}}>
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 15,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: Instrumentt.like
+                    ? 'rgba(245,42,42,0.2)'
+                    : 'rgba(0,0,0,0.2)',
+                }}>
+                <Icon
+                  name="favorite"
+                  size={18}
+                  color={COLORS.dark}
+                  backgroundColor={COLORS.blue_thick}
+                  color={Instrumentt.like ? COLORS.red : COLORS.dark}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{height: 100, alignItems: 'center'}}>
+            <Image
+              style={{
+                flex: 1,
+                resizeMode: 'contain',
+              }}
+              source={Instrumentt.img}
+            />
+          </View>
+          <Text style={{color :COLORS.black ,fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+            {Instrumentt.name}
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 5,
+            }}>
+            <Text style={{fontSize: 20, fontWeight: 'bold',color:COLORS.black}}>
+              LKR.{Instrumentt.price}
             </Text>
             <View
               style={{
@@ -118,99 +196,10 @@ const HomeScreen = ({navigation}) => {
     );
   };
 
-  // coppied card const
-
-  const Card_for_keyboard = ({Instrumentt}) => {
-    return (
-      <View style={style.card}>
-        <View style={{alignItems: 'flex-end'}}>
-          <TouchableOpacity>
-            <View
-              style={{
-                width: 30,
-                height: 30,
-                borderRadius: 15,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: Instrumentt.like
-                  ? 'rgba(245,42,42,0.2)'
-                  : 'rgba(0,0,0,0.2)',
-              }}>
-              <Icon
-                name="heart"
-                size={18}
-                color={COLORS.dark}
-                backgroundColor={COLORS.blue_thick}
-                color={Instrumentt.like ? COLORS.red : COLORS.dark}
-              />
-            </View>
-          </TouchableOpacity>
-        </View>
-        <View style={{height: 100, alignItems: 'center'}}>
-          <Image
-            style={{
-              flex: 1,
-              resizeMode: 'contain',
-            }}
-            source={Instrumentt.img}
-          />
-        </View>
-        <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
-          {Instrumentt.name}
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: 5,
-          }}>
-          <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-            LKR.{Instrumentt.price}
-          </Text>
-          <View
-            style={{
-              height: 28,
-              width: 28,
-              backgroundColor: COLORS.blue_thick,
-              borderRadius: 5,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
-              {' '}
-              +{' '}
-            </Text>
-          </View>
-        </View>
-      </View>
-    );
-  };
-
-
-
   const Tab = ({item}) => {
-    console.log(categoryIndex)
-    if (categoryIndex === 0){
-      return(
-        <FlatList
-        columnWrapperStyle={{justifyContent: 'space-between'}}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          marginTop: 10,
-          paddingBottom: 50,
-        }}
-        numColumns={2}
-      
-        data = {instruments}
-      
-        renderItem={({item}) => <Card_for_strings instruments={item}/>}
-      
-      
-      />
-      )
-    } else {
-      return(
+    console.log(categoryIndex);
+    if (categoryIndex === 0) {
+      return (
         <FlatList
           columnWrapperStyle={{justifyContent: 'space-between'}}
           showsVerticalScrollIndicator={false}
@@ -219,22 +208,27 @@ const HomeScreen = ({navigation}) => {
             paddingBottom: 50,
           }}
           numColumns={2}
-          data = {Instrumentt}
-          renderItem={({item}) => <Card_for_keyboard Instrumentt={item}/>}
+          data={instruments}
+          renderItem={({item}) => <Card_for_strings instruments={item} />}
         />
-      )
+      );
+    } else {
+      return (
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-between'}}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            marginTop: 10,
+            paddingBottom: 50,
+          }}
+          numColumns={2}
+          data={Instrumentt}
+          renderItem={({item}) => <Card_for_keyboard Instrumentt={item} />}
+        />
+      );
     }
   };
 
-  // const tab2 = ({instruments,Instrumentt}) => {
-  //   if (categoryIndex === 0){
-  //     instruments
-  //   } else {
-  //     Instrumentt 
-  //   }
-  // };
-
-  
   return (
     <SafeAreaView
       style={{
@@ -264,7 +258,7 @@ const HomeScreen = ({navigation}) => {
         </View>
         <Icon
           name="shopping-cart"
-          size={25}
+          size={35}
           color={COLORS.blue_light}
           marginTop={30}></Icon>
       </View>
@@ -272,11 +266,11 @@ const HomeScreen = ({navigation}) => {
       {/* Search bar and filter */}
       <View style={{marginTop: 15, flexDirection: 'row'}}>
         <View style={style.searchContainer}>
-          <Icon name="search" size={20} style={{marginLeft: 20}}></Icon>
+          <Icon name="search" size={20} color={COLORS.blue_light} style={{marginLeft: 20}}></Icon>
           <TextInput placeholder="Search" style={style.input} />
         </View>
         <View style={style.sortBtn}>
-          <Icon name="filter" size={25} color={COLORS.white} />
+          <Icon name="sort" size={25} color={COLORS.white} />
         </View>
       </View>
 
@@ -355,15 +349,16 @@ const style = StyleSheet.create({
   categoryTextSelected: {
     color: COLORS.blue_thick,
     paddingBottom: 5,
-    borderBottomWidth: 2,
+    borderBottomWidth: 4,
     borderColor: COLORS.blue_thick,
+    borderRadius: 10,
   },
   card: {
     height: 220,
     backgroundColor: COLORS.light,
     width,
     marginHorizontal: 2,
-    borderRadius: 10,
+    borderRadius: 20,
     marginBottom: 20,
     padding: 15,
   },
