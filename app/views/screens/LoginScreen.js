@@ -23,6 +23,7 @@ const LoginScreen = ({navigation}) => {
   
   return (
     <View style={styles.container}>
+      
       <Image source={require('../../assets/logo.png')} style={styles.logo} />
       <Text style={styles.text}>Soul music</Text>
       <FormInput
@@ -47,16 +48,16 @@ const LoginScreen = ({navigation}) => {
         onPress={() => alert('button click')}
       />
 
-      <TouchableOpacity style={styles.forgotButton}>
-        <Text style={styles.navButtonText}>Forgot Password</Text>
+      <TouchableOpacity 
+        style={styles.forgotButton}
+      >
+        <Text style={styles.navButtonText}>Forgot Password?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 
         style={styles.newAccountbutton}
         onPress={()=>navigation.navigate('Signup')}
-
       >
-
         <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
       </TouchableOpacity>
 
@@ -84,13 +85,12 @@ const styles = StyleSheet.create({
     //fontFamily: 'Kufam-SemiBoldItalic',
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 30,
     color: COLORS.blue_thick,
   },
-  navButton: {
-    marginTop: 15,
-  },
+  
   forgotButton: {
+    marginTop:25,
     marginVertical: 18,
   },
   newAccountbutton: {
@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: 18,
     fontWeight: '500',
-
     color: '#2e64e5',
     fontFamily: 'Lato-Regular',
   },
