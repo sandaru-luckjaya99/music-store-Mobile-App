@@ -5,6 +5,7 @@ import {windowHeight, windowWidth} from './Dimentions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../views/screens/colors';
 
+// input for log screen
 const FormInput = ({labelValue, placeholderText, iconType,seqTxt, ...rest}) => {
   return (
     <View style={styles.inputContainer}>
