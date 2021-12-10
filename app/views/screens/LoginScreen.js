@@ -9,12 +9,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
-
 import FormInput from '../../components/FOrmInputt';
 import FormButton from '../../components/Formbutton';
-
 import COLORS from './colors';
+
+// Loging Screen
 
 const LoginScreen = ({navigation}) => {
 
@@ -51,6 +50,16 @@ const LoginScreen = ({navigation}) => {
       <TouchableOpacity style={styles.forgotButton}>
         <Text style={styles.navButtonText}>Forgot Password</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity 
+        style={styles.newAccountbutton}
+        onPress={()=>navigation.navigate('Signup')}
+
+      >
+
+        <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
+      </TouchableOpacity>
+
     </View>
   );
 };
@@ -82,7 +91,11 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   forgotButton: {
-    marginVertical: 35,
+    marginVertical: 18,
+  },
+  newAccountbutton: {
+    marginBottom : 35,
+    
   },
   navButtonText: {
     fontSize: 18,
