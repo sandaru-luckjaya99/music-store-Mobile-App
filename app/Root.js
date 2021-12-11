@@ -9,8 +9,9 @@
 import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import LoginScreen from './views/screens/LoginScreen';
 import OnboardingScreen from './views/screens/onboardingScreen';
+import LoginScreen from './views/screens/LoginScreen';
+import SignupScreen from './views/screens/SignupScreen';
 import HomeScreen from './views/screens/HomeScreen';
 import DetailsScreen from './views/screens/DetailsScreen';
 
@@ -62,6 +63,14 @@ const App = () => {
             }}
           />
 
+          <Stack.Screen
+            name="Signup"
+            component={SignupScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+
           {/* Home Screen */}
           <Stack.Screen
             name="Home"
@@ -88,9 +97,20 @@ const App = () => {
         <StatusBar barStyle="dark-content" />
 
         <Stack.Navigator ScreenOptions={{header: () => null}}>
+
+          {/* Loging screen */}
           <Stack.Screen
             name="Loging"
             component={LoginScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+
+          {/* Signup Screen */}
+          <Stack.Screen
+            name="Signup"
+            component={SignupScreen}
             options={{
               headerShown: false,
             }}
