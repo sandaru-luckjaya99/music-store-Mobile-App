@@ -66,9 +66,17 @@ const App = () => {
           <Stack.Screen
             name="Signup"
             component={SignupScreen}
-            options={{
-              headerShown: false,
-            }}
+            options={({navigation})=>({
+              title:'',
+              headerStyle:{
+                backgroundColor:'#f9fafd',
+                shadowColor:'#f9fafd',
+                elevation:0,
+              },
+              // headerLeft :()=>(
+
+              // ),
+            })}
           />
 
           {/* Home Screen */}

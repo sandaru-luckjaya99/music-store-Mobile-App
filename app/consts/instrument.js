@@ -21,7 +21,7 @@ const Instrument = [
     like: false,
     img: require('../assets/cremonaviolin.png'),
     about:
-      'Dragon Plant one of the most popular and beautiful species that will produce clumpms. The storage of water often gives succulent plants a more swollen or fleshy appearance than other plants, a characteristic known as succulence.',
+      'Great Violin For Beginners.The set includes all the necessities to start learning how to play',
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const Instrument = [
     like: true,
     img: require('../assets/c30yamaha.png'),
     about:
-      'Potted Plant Ravenea Plant one of the most popular and beautiful species that will produce clumpms. The storage of water often gives succulent plants a more swollen or fleshy appearance than other plants, a characteristic known as succulence.',
+      '',
   },
   {
     id: 5,

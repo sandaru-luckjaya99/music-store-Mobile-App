@@ -20,10 +20,8 @@ const SignupScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
 
-  
   return (
     <View style={styles.container}>
-      
       <Text style={styles.text}>Create an account</Text>
       <FormInput
         labelValue={email}
@@ -33,33 +31,50 @@ const SignupScreen = ({navigation}) => {
         autoCapitalize="none"
         autoCorrect={false}
       />
-      <FormInput 
-        
+      <FormInput
         labelValue={password}
-        onChangeText={userPassword => setPassWord (userPassword)}
+        onChangeText={userPassword => setPassWord(userPassword)}
         placeholderText={'password'}
         iconType={'lock'}
         seqTxt={true}
-      /> 
+      />
 
       <FormButton
         buttonTitle={'Sign Up'}
         onPress={() => alert('button click')}
       />
+      <View style={styles.textPrivate}>
 
-      <TouchableOpacity 
-        style={styles.forgotButton}
-      >
+        {/* Registering text */}
+          <Text style={styles.color_textPrivate}>
+              By registering , you confirm that you accept our
+          </Text>
+
+        {/*  */}
+          <TouchableOpacity onPress={()=>alert('Terms Clicked!')}>
+              <Text  style={[ styles.color_textPrivate, {color:'#e88832'}]}> Terms of Service  </Text>
+          </TouchableOpacity >
+        {/*  */}
+          <Text  style={styles.color_textPrivate}>
+              and
+          </Text> 
+        {/*  */}
+          <Text style={[ styles.color_textPrivate, {color:'#e88832'}]} >
+              Privacy Policy
+          </Text>
+      </View>
+
+      <TouchableOpacity style={styles.forgotButton}>
         <Text style={styles.navButtonText}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.newAccountbutton}
-        onPress={()=>navigation.navigate('Signup')}
-      >
-        <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
+        onPress={() => navigation.navigate('Signup')}>
+        <Text style={styles.navButtonText}>
+          Don't have an account? Create here
+        </Text>
       </TouchableOpacity>
-
     </View>
   );
 };
@@ -87,19 +102,30 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     color: COLORS.blue_thick,
   },
-  
+
   forgotButton: {
-    marginTop:25,
+    marginTop: 25,
     marginVertical: 18,
   },
   newAccountbutton: {
-    marginBottom : 35,
-    
+    marginBottom: 35,
   },
   navButtonText: {
     fontSize: 18,
     fontWeight: '500',
     color: '#2e64e5',
     fontFamily: 'Lato-Regular',
+  },
+  textPrivate: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginVertical: 35,
+    justifyContent: 'center',
+  },
+  color_textPrivate: {
+    fontSize: 13,
+    fontWeight: '400',
+    fontFamily: 'Lato-Regular',
+    color: 'grey',
   },
 });

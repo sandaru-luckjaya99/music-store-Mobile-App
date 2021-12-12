@@ -56,7 +56,7 @@ const LoginScreen = ({navigation}) => {
 
       <TouchableOpacity 
         style={styles.newAccountbutton}
-        onPress={()=>navigation.navigate('Signup')}
+        onPress={()=>navigation.navigate('Home')}
       >
         <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
       </TouchableOpacity>
