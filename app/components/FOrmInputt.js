@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: windowHeight / 14,
     borderColor: COLORS.blue_light,
     borderRadius: 15,
-    borderWidth: 3,
+    borderWidth: 2,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: COLORS.whiteui,
