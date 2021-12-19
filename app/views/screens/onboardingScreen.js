@@ -10,6 +10,7 @@ import {
 // import HomeScreen from './HomeScreen';
 
 import Onboarding from 'react-native-onboarding-swiper';
+import { color } from 'react-native-reanimated';
 import COLORS from './colors';
 //import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -18,18 +19,21 @@ const OnboardingScreen = ({navigation}) => {
     <Onboarding
       onSkip={() => navigation.replace('Loging')}
       onDone={() => navigation.navigate('Loging')}
+      
       pages={[
         {
-          backgroundColor: COLORS.light,
+          
+          backgroundColor: COLORS.whiteui,
           image: <Image source={require('../../assets/onboard_1.png')}/>,
           title: 
             'All music Instruments under one roof',
+
           subtitle: 
             'Branded music Instruments for your enjoyment',
         },
 
         {
-          backgroundColor: COLORS.blue_light,
+          backgroundColor: COLORS.whiteui,
           image: <Image source={require('../../assets/onboard_2.png')} />,
           title: 
             'Professionals recomended',
@@ -38,10 +42,11 @@ const OnboardingScreen = ({navigation}) => {
         },
 
         {
-          backgroundColor: COLORS.blue_less,
+          backgroundColor:COLORS.whiteui,
           image: <Image source={require('../../assets/onboarding-img1.png')}/>,
           title: 
             'Choose your instrument',
+         
           subtitle: 
             'Good instruments according to your choice',
         },
