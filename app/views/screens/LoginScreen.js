@@ -47,7 +47,8 @@ const LoginScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle={'Sign In'}
-        onPress={() => alert('button click')}
+        // onPress={() => alert('button click')}
+        onPress={()=>navigation.navigate('Home') }
       />
 
       <TouchableOpacity 

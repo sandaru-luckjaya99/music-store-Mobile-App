@@ -58,6 +58,7 @@ const Instrument = [
     about:
       'Great classical guitar For Beginners.The set includes all the necessities to start your professional playing',
   },
+
   {
     id: 5,
     name: 'Cremona Cello',
@@ -70,15 +71,18 @@ const Instrument = [
     prewImg1:require('../assets/cremonacelloCase.png'),
     prewImg2:require('../assets/cremonacelloBow.png'),
     about:
-      'Great cello for beginners and professionals',
+      'Great cello for beginners and professionals.',
   },
+
   {
     id: 6,
-    name: 'Dragon Plant',
+    name: 'Link Mandolin',
     size_or_type :'Size - 4/4',
     price: '50.99',
+    content : "With a hard case",
+    other : "with a playing bow",
     like: false,
-    img: require('../assets/plant6.png'),
+    img: require('../assets/Linkmandolin.png'),
     prewImg1:require('../assets/cremonaviolinBow.png'),
     prewImg2:require('../assets/cremonaviolinCase.png'),
     about:
