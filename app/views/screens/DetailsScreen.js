@@ -2,7 +2,10 @@ import React from 'react';
 import {View, SafeAreaView, Image, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Instrument from '../../consts/instrument';
+
+import SwiperComponent from '../../components/Swiper';
 import COLORS from './colors';
+
 
 const DetailsScreen = ({navigation, route}) => {
   // const Instrument = route.params;
@@ -12,7 +15,8 @@ const DetailsScreen = ({navigation, route}) => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor:COLORS.white,
+        //backgroundColor:"#0000",
+        backgroundColor:COLORS.light
       }}>
       {/* header */}
       <View style={style.header}>
@@ -22,7 +26,15 @@ const DetailsScreen = ({navigation, route}) => {
 
       {/* Immage container */}
       <View style={style.imageContainer}>
-        <Image source={instrument.img} style={{resizeMode: 'contain', flex: 1}} />
+        
+        <SwiperComponent
+          Source1={instrument.img} style={{resizeMode: 'contain', flex: 1}}
+          Source2={instrument.prewImg1} style={{resizeMode: 'contain', flex: 1}}
+          Source3={instrument.prewImg2} style={{resizeMode: 'contain', flex: 1}}
+        />
+
+        
+        {/* <Image source={instrument.img} style={{resizeMode: 'contain', flex: 1}} /> */}
       </View>
 
       {/* Detail container */}
@@ -67,6 +79,7 @@ const DetailsScreen = ({navigation, route}) => {
         {/* -- Instrument content */}
         <View style={{paddingHorizontal: 20, marginTop: 2}}>
           <Text style={{fontSize: 15, fontWeight: 'bold',color : COLORS.blue_thick}}>{instrument.content}</Text>
+          <Text style={{fontSize: 15, fontWeight: 'bold',color : COLORS.blue_thick}}>{instrument.other}</Text>
           <Text
             style={{
               color:COLORS.blue_thick,
@@ -147,7 +160,7 @@ const style = StyleSheet.create({
   },
   detailsContainer: {
     flex: 0.40,
-    backgroundColor: COLORS.bluueLi,
+    backgroundColor: COLORS.ash,
     marginHorizontal:5 ,
     marginBottom:5,
     // borderRadius: 20,
