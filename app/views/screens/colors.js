@@ -9,9 +9,11 @@ const COLORS = {
   blue_light : '#8b9dc3',
   blue_less:'#85c3cf',
   bluueLi : '#E9F0FB',
+  whiteui:'#FAFAFA',
   ash : '#dfe3ee',
   black : '#000',
-  purple : '#833AB4'
+  purple : '#833AB4',
+  red_text:'#FA9897'
   
 };
 
