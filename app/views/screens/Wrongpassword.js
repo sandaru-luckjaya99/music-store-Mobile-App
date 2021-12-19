@@ -15,7 +15,7 @@ import COLORS from './colors';
 
 // Loging Screen
 
-const ForgotpasswordScreen = ({navigation}) => {
+const WrongpasswordScreen = ({navigation}) => {
 
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
@@ -85,7 +85,7 @@ const ForgotpasswordScreen = ({navigation}) => {
 
 };
 
-export default ForgotpasswordScreen;
+export default WrongpasswordScreen;
 
 const styles = StyleSheet.create({
   container: {
