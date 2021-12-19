@@ -6,19 +6,20 @@
  * @flow strict-local
  */
 
-import React, {useEffect} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { useEffect } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import OnboardingScreen from './views/screens/onboardingScreen';
 import LoginScreen from './views/screens/LoginScreen';
 import SignupScreen from './views/screens/SignupScreen';
+import WrongpasswordScreen from './views/screens/Wrongpassword';
 import HomeScreen from './views/screens/HomeScreen';
 import DetailsScreen from './views/screens/DetailsScreen';
 
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 //import AsyncStorageLib from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 
 // screens
@@ -45,7 +46,7 @@ const App = () => {
       <NavigationContainer>
         <StatusBar barStyle="dark-content" />
 
-        <Stack.Navigator ScreenOptions={{header: () => null}}>
+        <Stack.Navigator ScreenOptions={{ header: () => null }}>
           {/* Onboard Screen */}
           <Stack.Screen
             name="Onboard"
@@ -64,14 +65,22 @@ const App = () => {
           />
 
           <Stack.Screen
+            name="Wrongpassword"
+            component={WrongpasswordScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
             name="Signup"
             component={SignupScreen}
-            options={({navigation})=>({
-              title:'',
-              headerStyle:{
-                backgroundColor:'#f9fafd',
-                shadowColor:'#f9fafd',
-                elevation:0,
+            options={({ navigation }) => ({
+              title: '',
+              headerStyle: {
+                backgroundColor: '#f9fafd',
+                shadowColor: '#f9fafd',
+                elevation: 0,
               },
               // headerLeft :()=>(
 
@@ -104,12 +113,19 @@ const App = () => {
       <NavigationContainer>
         <StatusBar barStyle="dark-content" />
 
-        <Stack.Navigator ScreenOptions={{header: () => null}}>
-
+        <Stack.Navigator ScreenOptions={{ header: () => null }}>
           {/* Loging screen */}
           <Stack.Screen
             name="Loging"
             component={LoginScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+
+          <Stack.Screen
+            name="Wrongpassword"
+            component={WrongpasswordScreen}
             options={{
               headerShown: false,
             }}
