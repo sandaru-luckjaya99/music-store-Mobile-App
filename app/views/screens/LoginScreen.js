@@ -24,7 +24,7 @@ const LoginScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       
-      <Image source={require('../../assets/logo.png')} style={styles.logo} />
+      <Image source={require('../../assets/logoo.png')} style={styles.logo} />
       <Text style={styles.text}>Soul music</Text>
       <FormInput
         labelValue={email}
@@ -33,6 +33,7 @@ const LoginScreen = ({navigation}) => {
         iconType={'user'}
         autoCapitalize="none"
         autoCorrect={false}
+        //backgroundColor={COLORS.whiteui}
       />
       <FormInput 
         
@@ -41,6 +42,7 @@ const LoginScreen = ({navigation}) => {
         placeholderText={'password'}
         iconType={'lock'}
         seqTxt={true}
+        //backgroundColor={COLORS.whiteui}
       /> 
 
       <FormButton
@@ -50,13 +52,14 @@ const LoginScreen = ({navigation}) => {
 
       <TouchableOpacity 
         style={styles.forgotButton}
+        onPress={()=>navigation.navigate('Wrongpassword')}
       >
-        <Text style={styles.navButtonText}>Forgot Password?</Text>
+        <Text style={styles.navButtonText1}>Forgot Password?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 
         style={styles.newAccountbutton}
-        onPress={()=>navigation.navigate('Home')}
+        onPress={()=>navigation.navigate('Signup')}
       >
         <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
       </TouchableOpacity>
@@ -69,11 +72,11 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.bluueLi,
+    backgroundColor: COLORS.white,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 30,
     //paddingTop: 50
   },
   logo: {
@@ -98,9 +101,15 @@ const styles = StyleSheet.create({
     
   },
   navButtonText: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: '500',
-    color: '#2e64e5',
+    color: COLORS.blue_thick,
+    fontFamily: 'Lato-Regular',
+  },
+  navButtonText1: {
+    fontSize: 17,
+    fontWeight: '500',
+    color: COLORS.red_text,
     fontFamily: 'Lato-Regular',
   },
 });
