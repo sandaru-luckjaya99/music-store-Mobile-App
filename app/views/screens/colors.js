@@ -13,7 +13,8 @@ const COLORS = {
   ash : '#dfe3ee',
   black : '#000',
   purple : '#833AB4',
-  red_text:'#FA9897'
+  red_text:'#FA9897',
+  drawer:'#ECECEC'
   
 };
 

@@ -69,7 +69,7 @@ const Drawer = createDrawerNavigator();
 function DrawerRoutes(){
   return (
 
-      <Drawer.Navigator drawerContent={props=> <CustomDrawer {...props}/>} drawerPosition='right'  initialRouteName='Home' drawerStyle={{borderRadius: 50,}}>
+      <Drawer.Navigator drawerContent={props=> <CustomDrawer {...props}/>} drawerPosition='right'  initialRouteName='Home' drawerStyle={{borderRadius: 60,}}>
         <Drawer.Screen name='Home' component={HomeScreen}/>
         {/* <Drawer.Screen name="Details" component={DetailsScreen}/> */}
       </Drawer.Navigator>

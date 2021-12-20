@@ -28,11 +28,11 @@ export default CustomDrawer;
 const styles = StyleSheet.create({
   Contain: {
     flex: 1,
-    backgroundColor: COLORS.whiteui,
+    backgroundColor: COLORS.drawer,
     borderColor: COLORS.blue_thick,
     borderWidth: 5,
-    borderTopLeftRadius: 25,
-    borderBottomLeftRadius: 25,
+    borderTopLeftRadius: 50,
+    borderBottomLeftRadius: 50,
   },
 
   Container: {
