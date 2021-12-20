@@ -6,8 +6,9 @@
  * @flow strict-local
  */
 
-import React, { useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, {useEffect} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import OnboardingScreen from './views/screens/onboardingScreen';
 import LoginScreen from './views/screens/LoginScreen';
@@ -15,15 +16,67 @@ import SignupScreen from './views/screens/SignupScreen';
 import WrongpasswordScreen from './views/screens/Wrongpassword';
 import HomeScreen from './views/screens/HomeScreen';
 import DetailsScreen from './views/screens/DetailsScreen';
+import CustomDrawer from './components/CustomDrawer'
 
-import { StatusBar } from 'react-native';
+import {StatusBar} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 //import AsyncStorageLib from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 
 // screens
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+// const HomeStack = createStackNavigator();
+// const DetailStack = createStackNavigator();
+
+// const HomeStackScreen = ({navigation}) => (
+//   <HomeStack.Navigator screenOptions={{header: () => null}}>
+//     <HomeStack.Screen
+//       name="Home"
+//       component={HomeScreen}
+//       options={{
+//         headerShown: false,
+//       }}
+//     />
+//     {/* <HomeStack.Screen
+//       name="Details"
+//       component={DetailsScreen}
+//       options={{
+//         headerShown: false,
+//       }}
+//     /> */}
+//   </HomeStack.Navigator>
+// );
+
+// const DetailStackScreen = ({navigation}) => (
+//   <DetailStack.Navigator screenOptions={{header: () => null}}>
+//     <DetailStack.Screen
+//       name="Details"
+//       component={DetailsScreen}
+//       options={{
+//         headerShown: false,
+//       }}
+//     />
+//   </DetailStack.Navigator>
+// );
+
+// --------------------------------------------------------------------------------------------------------------------------------------------
+
+// Drawer routes
+function DrawerRoutes(){
+  return (
+
+      <Drawer.Navigator drawerContent={props=> <CustomDrawer {...props}/>} drawerPosition='right'  initialRouteName='Home' drawerStyle={{borderRadius: 50,}}>
+        <Drawer.Screen name='Home' component={HomeScreen}/>
+        {/* <Drawer.Screen name="Details" component={DetailsScreen}/> */}
+      </Drawer.Navigator>
+
+
+  )
+}
 
 const App = () => {
   const [isFirstLunch, setFirstLunch] = React.useState(null);
@@ -46,7 +99,7 @@ const App = () => {
       <NavigationContainer>
         <StatusBar barStyle="dark-content" />
 
-        <Stack.Navigator ScreenOptions={{ header: () => null }}>
+        <Stack.Navigator ScreenOptions={{header: () => null}}>
           {/* Onboard Screen */}
           <Stack.Screen
             name="Onboard"
@@ -75,8 +128,9 @@ const App = () => {
           <Stack.Screen
             name="Signup"
             component={SignupScreen}
-            options={({ navigation }) => ({
+            options={({navigation}) => ({
               title: '',
+              headerShown: false,
               headerStyle: {
                 backgroundColor: '#f9fafd',
                 shadowColor: '#f9fafd',
@@ -91,7 +145,7 @@ const App = () => {
           {/* Home Screen */}
           <Stack.Screen
             name="Home"
-            component={HomeScreen}
+            component={DrawerRoutes}
             options={{
               headerShown: false,
             }}
@@ -110,10 +164,12 @@ const App = () => {
     );
   } else {
     return (
+
       <NavigationContainer>
+
         <StatusBar barStyle="dark-content" />
 
-        <Stack.Navigator ScreenOptions={{ header: () => null }}>
+        <Stack.Navigator ScreenOptions={{header: () => null}}>
           {/* Loging screen */}
           <Stack.Screen
             name="Loging"
@@ -143,7 +199,7 @@ const App = () => {
           {/* Home Screen */}
           <Stack.Screen
             name="Home"
-            component={HomeScreen}
+            component={DrawerRoutes}
             options={{
               headerShown: false,
             }}
@@ -158,6 +214,10 @@ const App = () => {
             }}
           />
         </Stack.Navigator>
+        {/* <Drawer.Navigator initialRouteName="Home">
+          <Drawer.Screen name="Home" component={HomeStackScreen} />
+          <Drawer.Screen name="Details" component={DetailStackScreen} />
+        </Drawer.Navigator> */}
       </NavigationContainer>
     );
   }

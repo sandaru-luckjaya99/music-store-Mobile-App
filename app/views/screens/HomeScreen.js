@@ -113,6 +113,7 @@ const HomeScreen = ({navigation}) => {
                 // //borderBottomRightRadius : 20,
                 // marginLeft : 21,
                 // marginBottom : 5
+                
               }}>
               <Text
                 style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
@@ -270,7 +271,7 @@ const HomeScreen = ({navigation}) => {
           <TextInput placeholder="Search" style={style.input} />
         </View>
         <View style={style.sortBtn}>
-          <Icon name="sort" size={25} color={COLORS.white} />
+          <Icon name="sort" size={25} color={COLORS.white} onPress={()=>navigation.openDrawer()}/>
         </View>
       </View>
 
