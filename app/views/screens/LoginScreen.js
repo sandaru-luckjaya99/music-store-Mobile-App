@@ -7,28 +7,58 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  ScrollView
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FormInput from '../../components/FOrmInputt';
 import FormButton from '../../components/Formbutton';
 import COLORS from './colors';
+import { Auth } from '../../firebaseAuth/setup';
+import { SignInUser } from '../../firebaseAuth/apiService';
+import { clear } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 // Loging Screen
 
 const LoginScreen = ({navigation}) => {
 
+
+
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
+  const [state,setState]=React.useState({
+    email:'',
+    password:'',
+  })
+
+  const[user,setUser]=useState();
+
+  const SignIn=()=>{
+    SignInUser(state.email,state.password).then((data)=>{
+      alert(data);
+    navigation.navigate('Home');
+    }).catch((error)=>{
+      alert(error);
+    })
+  };
+
+  const onAuthStateChanged=user=>{
+    setUser(user);
+  };
+
+  React.useEffect(()=>{
+    const subscriber=Auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  },[])
 
   
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       
       <Image source={require('../../assets/logoo.png')} style={styles.logo} />
       <Text style={styles.text}>Soul music</Text>
       <FormInput
-        labelValue={email}
-        onChangeText={userEmail => setEmail(userEmail)}
+        labelValue={state.email}
+        onChangeText={userEmail => setState({...state,email:userEmail})}
         placeholderText={'email'}
         iconType={'user'}
         autoCapitalize="none"
@@ -37,18 +67,20 @@ const LoginScreen = ({navigation}) => {
       />
       <FormInput 
         
-        labelValue={password}
-        onChangeText={userPassword => setPassWord (userPassword)}
+        labelValue={state.password}
+        onChangeText={userPassword => setState({...state,password:userPassword})}
         placeholderText={'password'}
         iconType={'lock'}
         seqTxt={true}
+        
         //backgroundColor={COLORS.whiteui}
       /> 
 
       <FormButton
         buttonTitle={'Sign In'}
-        // onPress={() => alert('button click')}
-        onPress={()=>navigation.navigate('Home') }
+        //onPress={() => {Home} , clear(FormInput)}
+        onPress={SignIn }
+        
       />
 
       <TouchableOpacity 
@@ -65,7 +97,7 @@ const LoginScreen = ({navigation}) => {
         <Text style={styles.navButtonText}>Don't have an account? Create here</Text>
       </TouchableOpacity>
 
-    </View>
+    </ScrollView>
   );
 };
 

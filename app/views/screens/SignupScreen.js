@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  ScrollView
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FormInput from '../../components/FOrmInputt';
@@ -16,9 +17,37 @@ import COLORS from './colors';
 
 // Loging Screen
 
+import { Auth } from '../../firebaseAuth/setup';
+import { SignUpUser } from '../../firebaseAuth/apiService';
+//import { ScrollView } from 'react-native-gesture-handler';
+
 const SignupScreen = ({navigation}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassWord] = useState();
+  // const [email, setEmail] = useState();
+  // const [password, setPassWord] = useState();
+  const[state,setState]=React.useState({
+    fName:'',
+    lName:'',
+    email:'',
+    password:'',
+    comformPassword:''
+  });
+  const[user,setUser]=React.useState();
+
+  const SignUp=()=>{
+    SignUpUser(state.email,state.password).then((data)=>{
+      alert(data);
+    }).catch((error)=>{
+      alert(error);
+    })
+  };
+  const onAuthStateChanged=user=>{
+    setUser(user);
+
+  }
+  React.useEffect(()=>{
+    const subscriber=Auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  })
 
   return (
     <View style={styles.container}>
@@ -26,7 +55,7 @@ const SignupScreen = ({navigation}) => {
 
       <Text style={styles.text}>Soul Music</Text>
 
-      <View style={styles.container2}>
+      <ScrollView contentContainerStyle={styles.container2}>
         <Text style={styles.text1}>
           Create an account
         </Text>
@@ -40,44 +69,46 @@ const SignupScreen = ({navigation}) => {
         {/* <Image source={require('../../assets/logo.png')} style={styles.logo} /> */}
 
         
-      </View>
-
+      </ScrollView>
+      {/* First name */}
       <FormInput
-        labelValue={email}
-        onChangeText={userEmail => setEmail(userEmail)}
+        labelValue={state.fName}
+        onChangeText={userfName=> setState({...state,fName:userfName})}
         placeholderText={'first name'}
         iconType={'idcard'}
         autoCapitalize="none"
         autoCorrect={false}
       />
-
+      {/* Last name */}
       <FormInput
-        labelValue={email}
-        onChangeText={userEmail => setEmail(userEmail)}
+        labelValue={state.lName}
+        onChangeText={userlName=> setState({...state,lName:userlName})}
         placeholderText={'last name'}
         iconType={'idcard'}
         autoCapitalize="none"
         autoCorrect={false}
       />
-
+      {/* Email */}
       <FormInput
-        labelValue={email}
-        onChangeText={userEmail => setEmail(userEmail)}
+        labelValue={state.email}
+        onChangeText={useremail=> setState({...state,email:useremail})}
         placeholderText={'email'}
         iconType={'user'}
         autoCapitalize="none"
         autoCorrect={false}
       />
+      {/* password */}
       <FormInput
-        labelValue={password}
-        onChangeText={userPassword => setPassWord(userPassword)}
+        labelValue={state.password}
+        onChangeText={userpwd=> setState({...state,password:userpwd})}
         placeholderText={'password'}
         iconType={'lock'}
         seqTxt={true}
       />
+      {/* re-enter password */}
       <FormInput
-        labelValue={password}
-        onChangeText={userPassword => setPassWord(userPassword)}
+        labelValue={state.comformPassword}
+        onChangeText={usercompwd=> setState({...state,comformPassword:usercompwd})}
         placeholderText={'re-enter password'}
         iconType={'lock'}
         seqTxt={true}
@@ -85,7 +116,7 @@ const SignupScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle={'Sign Up'}
-        onPress={() => Alert.alert('button click')}
+        onPress={SignUp}
       />
       <View style={styles.textPrivate}>
         {/* Registering text */}
