@@ -19,6 +19,7 @@ const FormInput = ({labelValue, placeholderText, iconType,seqTxt, ...rest}) => {
         placeholder={placeholderText}
         placeholderTextColor="#666"
         secureTextEntry={seqTxt}
+        clearButtonMode='always'
         {...rest}
       />
     </View>
