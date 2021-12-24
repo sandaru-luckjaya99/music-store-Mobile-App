@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, SafeAreaView, Image, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Instrument from '../../consts/instrument';
+import Instrument from '../../consts/String_instrument';
 
 import SwiperComponent from '../../components/Swiper';
 import COLORS from './colors';
