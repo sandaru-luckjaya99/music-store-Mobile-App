@@ -19,7 +19,7 @@ import DetailsScreen from './views/screens/DetailsScreen';
 import CustomDrawer from './components/CustomDrawer';
 import Contac_us from './views/screens/Contact_us';
 import Aboutus from './views/screens/Aboutus';
-//import Favourite from './views/screens/Favourite';
+
 
 import {StatusBar} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
