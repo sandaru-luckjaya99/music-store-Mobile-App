@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image,Text, StyleSheet,TouchableOpacity,Dimensions} from 'react-native';
 import {windowHeight, windowWidth} from './Dimentions';
-import Instrumentt from '../consts/instrumentt';
+import Instrumentt from '../consts/Keyboard_instrument';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/MaterialIcons';

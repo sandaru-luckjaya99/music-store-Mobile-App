@@ -7,6 +7,8 @@ import COLORS from '../views/screens/colors';
 
 // input for log screen
 const FormInput = ({labelValue, placeholderText, iconType,seqTxt, ...rest}) => {
+
+
   return (
     <View style={styles.inputContainer}>
       <View style={styles.iconStyle}>
@@ -19,7 +21,7 @@ const FormInput = ({labelValue, placeholderText, iconType,seqTxt, ...rest}) => {
         placeholder={placeholderText}
         placeholderTextColor="#666"
         secureTextEntry={seqTxt}
-        clearButtonMode='always'
+        //clearButtonMode='always'
         {...rest}
       />
     </View>

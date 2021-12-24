@@ -23,7 +23,7 @@ const OnboardingScreen = ({navigation}) => {
       pages={[
         {
           
-          backgroundColor: COLORS.whiteui,
+          backgroundColor: COLORS.white,
           image: <Image source={require('../../assets/onboard_1.png')}/>,
           title: 
             'All music Instruments under one roof',
