@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -9,7 +9,6 @@ import COLORS from '../views/screens/colors';
 const CustomDrawer = props => {
   return (
     <View style={styles.Contain}>
-
       <View style={styles.Container}>
         <Text style={styles.Menu_txt}> Menu </Text>
       </View>
@@ -18,9 +17,11 @@ const CustomDrawer = props => {
         <DrawerContentScrollView {...props}>
           <DrawerItemList {...props} />
         </DrawerContentScrollView>
-        <Text>Our Custom Text</Text>
+        <Image
+          source={require('../assets/logoo.png')}
+          style={styles.imgcontainer}></Image>
+        <Text style={styles.txt}>Soul music</Text>
       </View>
-
     </View>
   );
 };
@@ -43,11 +44,27 @@ const styles = StyleSheet.create({
 
   Menu_txt: {
     marginTop: 10,
+
     fontSize: 28,
     fontWeight: '900',
     color: COLORS.blue_thick,
     alignItems: 'center',
     // justifyContent:'center'
+  },
+
+  txt: {
+    marginTop: 10,
+    marginBottom: 30,
+    marginLeft: 70,
+    fontSize: 28,
+    fontWeight: '900',
+    color: COLORS.blue_thick,
+    alignItems: 'center',
+    // justifyContent:'center'
+  },
+  imgcontainer:{
+    marginTop: 10,
+    marginLeft:5
   },
 
   Container2: {

@@ -1,4 +1,4 @@
-const Instrumentt = [
+const Keyboard = [
   
   {
     id: 1,
@@ -68,4 +68,4 @@ const Instrumentt = [
 
 ];
 
-export default Instrumentt;
+export default Keyboard;

@@ -16,6 +16,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import string from '../../consts/String_instrument';
 import keyboard from '../../consts/Keyboard_instrument';
+import Wind from '../../consts/Wind_instrument';
 
 
 
@@ -104,9 +105,7 @@ const HomeScreen = ({navigation}) => {
                 backgroundColor: COLORS.blue_thick,
                 borderRadius: 5,
                 justifyContent: 'center',
-                alignItems: 'center',
-                
-                
+                alignItems: 'center',  
               }}>
               <Text
                 style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
@@ -190,6 +189,146 @@ const HomeScreen = ({navigation}) => {
     );
   };
 
+  // Card for wind
+
+  const Card_for_Wind = ({Wind}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Details', Wind)}>
+        <View style={style.card}>
+          <View style={{alignItems: 'flex-end'}}>
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 15,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: Wind.like
+                    ? 'rgba(245,42,42,0.2)'
+                    : 'rgba(0,0,0,0.2)',
+                }}>
+                <Icon
+                  name="favorite"
+                  size={18}
+                  color={COLORS.dark}
+                  backgroundColor={COLORS.blue_thick}
+                  color={Wind.like ? COLORS.red : COLORS.dark}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{height: 100, alignItems: 'center'}}>
+            <Image
+              style={{
+                flex: 1,
+                resizeMode: 'contain',
+              }}
+              source={Wind.img}
+            />
+          </View>
+          <Text style={{fontWeight:'300',color :COLORS.black , fontSize: 17, marginTop: 10}}>
+            {Wind.name}
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 5,
+            }}>
+            <Text style={{fontSize: 17, fontWeight: 'bold',color:COLORS.black}}>
+              LKR.{Wind.price}
+            </Text>
+            <View
+              style={{
+                height: 28,
+                width: 28,
+                backgroundColor: COLORS.blue_thick,
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text
+                style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
+                {''}+{''}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  const Card_for_Purcussion = ({Wind}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Details', Wind)}>
+        <View style={style.card}>
+          <View style={{alignItems: 'flex-end'}}>
+            <TouchableOpacity>
+              <View
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 15,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: Wind.like
+                    ? 'rgba(245,42,42,0.2)'
+                    : 'rgba(0,0,0,0.2)',
+                }}>
+                <Icon
+                  name="favorite"
+                  size={18}
+                  color={COLORS.dark}
+                  backgroundColor={COLORS.blue_thick}
+                  color={Wind.like ? COLORS.red : COLORS.dark}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={{height: 100, alignItems: 'center'}}>
+            <Image
+              style={{
+                flex: 1,
+                resizeMode: 'contain',
+              }}
+              source={Wind.img}
+            />
+          </View>
+          <Text style={{fontWeight:'300',color :COLORS.black , fontSize: 17, marginTop: 10}}>
+            {Wind.name}
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 5,
+            }}>
+            <Text style={{fontSize: 17, fontWeight: 'bold',color:COLORS.black}}>
+              LKR.{Wind.price}
+            </Text>
+            <View
+              style={{
+                height: 28,
+                width: 28,
+                backgroundColor: COLORS.blue_thick,
+                borderRadius: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text
+                style={{fontSize: 21, color: COLORS.white, fontWeight: 'bold'}}>
+                {''}+{''}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+
   // Item loader function
   const Item_tabs = ({item}) => {
     console.log(categoryIndex);
@@ -231,12 +370,12 @@ const HomeScreen = ({navigation}) => {
             paddingBottom: 50,
           }}
           numColumns={2}
-          data={keyboard}
-          renderItem={({item}) => <Card_for_keyboard keyboard={item} />}
+          data={Wind}
+          renderItem={({item}) => <Card_for_Wind Wind={item} />}
         />
       );
     }
-    else if (categoryIndex === 2) {
+    else if (categoryIndex === 3) {
       return (
         <FlatList
           columnWrapperStyle={{justifyContent: 'space-between'}}

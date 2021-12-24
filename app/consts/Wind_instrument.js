@@ -1,65 +1,65 @@
-const Instrumentt = [
+const Wind = [
   {
     id: 1,
-    name: 'lark - violin',
+    name: 'Concert flute',
     size_or_type :'Size4/4',
-    content : "With a bow",
-    other :"With a fiber violin case",
+    content : "Single reed",
+    other :"Silver colour",
     price: '39,000',
     like: true,
-    img: require('../assets/larkviolin.png'),
-    prewImg1:require('../assets/larkviolinBow.png'),
-    prewImg2:require('../assets/larkviolinCase.png'),
+    img: require('../assets/Flute1.png'),
+    prewImg1:require('../assets/Flute1.png'),
+    prewImg2:require('../assets/Flute1.png'),
     about:
-      'Great Violin For Beginners.The set includes all the necessities to start learning how to play',
+      'Great Flute For Beginners.The set includes all the necessities to start learning how to play',
     
   },
 
   {
     id: 2,
-    name: 'Cremona violin',
+    name: 'Recorder flute',
     size_or_type :'Size - 4/4',
-    content : "Without a bow",
-    other :"With a fiber violin case",
+    content : "Double reed",
+    other :"Blue in colour",
     price: '29,000',
     like: false,
-    img: require('../assets/cremonaviolin.png'),
-    prewImg1:require('../assets/cremonaviolinBow.png'),
-    prewImg2:require('../assets/cremonaviolinCase.png'),
+    img: require('../assets/recorder1.png'),
+    prewImg1:require('../assets/recorder1.png'),
+    prewImg2:require('../assets/recorder1.png'),
     about:
-      'Great Violin For Beginners.The set includes all the necessities to start learning how to play',
+      'Great Recorder flute For Beginners.The set includes all the necessities to start',
   },
   {
     id: 3,
-    name: 'Yamaha f3-10',
+    name: 'Saxaphone',
     size_or_type :'Size - 4/4',
-    content : "with fiber case",
-    other :"with a branded string set",
+    content : "Double reed",
+    other :"Gold colour",
     price: '25,000',
     like: false,
-    img: require('../assets/f310yamaha.png'),
-    prewImg1:require('../assets/f310yamahaCase.png'),
-    prewImg2:require('../assets/f310yamahaStrings.png'),
+    img: require('../assets/sax.png'),
+    prewImg1:require('../assets/sax.png'),
+    prewImg2:require('../assets/sax.png'),
     about:
-      'Great Violin For Beginners.The set includes all the necessities to start learning how to play',
+      'Great Sax For Beginners.The set includes all the necessities to start learning how to play',
   },
 
   {
     id: 4,
-    name: 'Yamaha c-30',
+    name: 'Thrombone',
     size_or_type :'Size - 4/4',
-    content : "With a hard case",
-    other : "with a guitar capo",
-    price: '24,000',
+    content : "Double reed",
+    other : "Gold colour",
+    price: '90,000',
     like: true,
-    img: require('../assets/c30yamaha.png'),
-    prewImg1:require('../assets/cremonaviolinBow.png'),
-    prewImg2:require('../assets/cremonaviolinCase.png'),
+    img: require('../assets/Indianflute.png'),
+    prewImg1:require('../assets/Indianflute.png'),
+    prewImg2:require('../assets/Indianflute.png'),
     about:
-      'Great classical guitar For Beginners.The set includes all the necessities to start your professional playing',
+      'Great classical thrombone For Beginners.The set includes all the necessities professionals',
   },
 
 
 ];
 
-export default Instrumentt;
+export default Wind;

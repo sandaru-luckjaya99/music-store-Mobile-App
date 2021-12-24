@@ -78,7 +78,7 @@ const Instrument = [
     id: 6,
     name: 'Link Mandolin',
     size_or_type :'Size - 4/4',
-    price: '50.99',
+    price: '30,000',
     content : "With a hard case",
     other : "with a playing bow",
     like: false,
@@ -88,18 +88,7 @@ const Instrument = [
     about:
       'Potted Plant Ravenea Plant one of the most popular and beautiful species that will produce clumpms. The storage of water often gives succulent plants a more swollen or fleshy appearance than other plants, a characteristic known as succulence.',
   },
-  {
-    id: 7,
-    name: 'Dragon Plant',
-    size_or_type :'Size - 4/4',
-    price: '50.99',
-    like: false,
-    img: require('../assets/plant6.png'),
-    prewImg1:require('../assets/cremonaviolinBow.png'),
-    prewImg2:require('../assets/cremonaviolinCase.png'),
-    about:
-      'Potted Plant Ravenea Plant one of the most popular and beautiful species that will produce clumpms. The storage of water often gives succulent plants a more swollen or fleshy appearance than other plants, a characteristic known as succulence.',
-  },
+
 ];
 
 export default Instrument;
